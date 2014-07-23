@@ -1,0 +1,107 @@
+{
+    "type" : "app",
+
+    "info" : {
+        "package"         : "##pkgname##",
+        "name"            : "Selfoss",
+        "tagline"         : "##pkgdesc##",
+        "description"     : "##description##",
+
+        "developer"       : "##developer##",
+        "maintainer"      : "##maintainer##",
+
+        "upstreamversion" : "##pkgver##",
+        "packageversion"  : "##pkgver##-##pkgrel##",
+
+        "licenses" : [
+            "##license##"
+        ]
+    },
+
+    "roles" : {
+        "apache2" : {
+            "defaultcontext" : "/selfoss",
+            "depends" : [
+                "php",
+                "php-apache"
+            ],
+            "apache2modules" : [
+                "php5",
+                "access_compat",
+                "rewrite"
+            ],
+            "phpmodules" : [
+                "mysql",
+                "mysqli"
+            ],
+            "appconfigitems" : [
+                {
+                    "type" : "directorytree",
+                    "names" : [
+                        ".htaccess",
+                        "common.php",
+                        "controllers",
+                        "daos",
+                        "defaults.ini",
+                        "helpers",
+                        ".htaccess",
+                        "index.php",
+                        "libs",
+                        "run.php",
+                        "spouts",
+                        "templates",
+                        "update.php"
+                    ],
+                    "source" : "selfoss/$1",
+                    "uname" : "root",
+                    "gname" : "root",
+                    "filepermissions" : "preserve",
+                    "dirpermissions"  : "preserve"
+                },
+                {
+                    "type" : "directorytree",
+                    "name"  : "data",
+                    "source" : "selfoss/$1",
+                    "retentionpolicy" : "keep",
+                    "retentionbucket" : "datadir",
+                    "filepermissions" : "preserve",
+                    "dirpermissions"  : "preserve",
+                    "uname"       : "${apache2.uname}",
+                    "gname"       : "${apache2.gname}"
+                },
+                {
+                    "type" : "directorytree",
+                    "name"  : "public",
+                    "source" : "selfoss/$1",
+                    "filepermissions" : "preserve",
+                    "dirpermissions"  : "preserve",
+                    "uname"       : "${apache2.uname}",
+                    "gname"       : "${apache2.gname}"
+                },
+                {
+                    "type"   : "file",
+                    "name"   : "config.ini",
+                    "template"     : "tmpl/config.ini.tmpl",
+                    "templatelang" : "varsubst"
+                },
+                {
+                    "type"   : "file",
+                    "name"   : "${appconfig.cronjobfile}",
+                    "template"     : "tmpl/cronjob.tmpl",
+                    "templatelang" : "varsubst"
+                }
+            ]
+        },
+        "mysql" : {
+            "appconfigitems" : [
+                {
+                    "type"       : "mysql-database",
+                    "name"       : "maindb",
+                    "retentionpolicy"  : "keep",
+                    "retentionbucket"  : "maindb",
+                    "privileges" : "all privileges"
+                }
+            ]
+        }
+    }
+}

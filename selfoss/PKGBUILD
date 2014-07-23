@@ -1,0 +1,45 @@
+developer=http://selfoss.aditu.de/
+maintainer=http://indiebox.net/
+pkgname=$(basename $(pwd))
+pkgver=2.11
+pkgrel=1
+pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
+arch=('any')
+url=${developer}
+license=("GPL")
+groups=()
+depends=()
+backup=()
+source=("https://github.com/SSilence/selfoss/archive/${pkgver}.tar.gz")
+options=('!strip')
+md5sums=('99253006e1bc7cc23fedd866dfc1e8f1')
+# from http://stackoverflow.com/questions/1251999/sed-how-can-i-replace-a-newline-n
+_parameterize=$(cat <<END
+    s!##pkgname##!$pkgname!g;
+    s/##pkgdesc##/$pkgdesc/g;
+    s!##developer##!$_developer!g;
+    s!##maintainer##!$maintainer!g;
+    s!##pkgver##!$pkgver!g;
+    s!##pkgrel##!$pkgrel!g;
+    s!##license##!$license!g;
+    s!##description##!$description!g;
+END
+)
+
+package() {
+# Manifest
+    mkdir -p $pkgdir/var/lib/indiebox/manifests
+    perl -pe "$_parameterize" $startdir/indiebox-manifest.json > $pkgdir/var/lib/indiebox/manifests/${pkgname}.json
+    chmod 0644 $pkgdir/var/lib/indiebox/manifests/${pkgname}.json
+
+# Icons
+    mkdir -p $pkgdir/srv/http/_appicons/$pkgname
+    install -m644 $startdir/appicons/{72x72,144x144}.png $pkgdir/srv/http/_appicons/$pkgname/
+
+# Templates
+    mkdir -p $pkgdir/usr/share/${pkgname}/tmpl
+    install -m644 $startdir/tmpl/{config.ini,cronjob}.tmpl  $pkgdir/usr/share/${pkgname}/tmpl/
+
+# Code
+    cp -dr --no-preserve=ownership $startdir/src/selfoss-$pkgver $pkgdir/usr/share/${pkgname}/selfoss
+}

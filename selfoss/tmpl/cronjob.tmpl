@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+PATH=/usr/bin
+MAILTO=root
+0-59/30 * * * * ${apache2.uname} ( cd "${appconfig.apache2.dir}" && /usr/bin/php ./update.php )
+# This job might take a while, so we don't run it very often
