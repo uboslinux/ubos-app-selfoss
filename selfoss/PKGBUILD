@@ -2,7 +2,7 @@ developer=http://selfoss.aditu.de/
 maintainer=http://indiebox.net/
 pkgname=$(basename $(pwd))
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 url=${developer}
@@ -17,7 +17,7 @@ md5sums=('99253006e1bc7cc23fedd866dfc1e8f1')
 _parameterize=$(cat <<END
     s!##pkgname##!$pkgname!g;
     s/##pkgdesc##/$pkgdesc/g;
-    s!##developer##!$_developer!g;
+    s!##developer##!$developer!g;
     s!##maintainer##!$maintainer!g;
     s!##pkgver##!$pkgver!g;
     s!##pkgrel##!$pkgrel!g;
