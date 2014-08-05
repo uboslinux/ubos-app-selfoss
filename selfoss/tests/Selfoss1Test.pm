@@ -27,17 +27,11 @@ use IndieBox::WebAppTest;
 
 # The states and transitions for this test
 
-my $custPointValues = {
-        'adminlogin' => 'specialuser',
-        'adminpass'  => 'specialpass'
-};
-
 my $TEST = new IndieBox::WebAppTest(
     name                     => 'Selfoss1AppTest',
     appToTest                => 'selfoss',
     hostname                 => 'selfoss-test',
     testContext              => '/foobar',
-    customizationPointValues => $custPointValues,
 
     checks => [
             new IndieBox::WebAppTest::StateCheck(
@@ -45,12 +39,7 @@ my $TEST = new IndieBox::WebAppTest(
                     check => sub {
                         my $c = shift;
 
-                        my $response = $c->httpGetRelativeContext( '/' );
-                        unless( $response->{headers} =~ m!HTTP/1.1 200 OK! ) {
-                            $c->reportError( 'Not HTTP Status 200', $response->{headers} );
-                        }
-                        					
-                        return 1;
+                        $c->getMustStatus( '/', 200, 'Wrong status' );
                     }
             )
     ]
