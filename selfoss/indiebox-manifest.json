@@ -32,7 +32,8 @@
             ],
             "phpmodules" : [
                 "mysql",
-                "mysqli"
+                "mysqli",
+                "pdo_mysql"
             ],
             "appconfigitems" : [
                 {
