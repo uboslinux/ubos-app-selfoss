@@ -23,18 +23,18 @@ use warnings;
 
 package Selfoss1Test;
 
-use IndieBox::WebAppTest;
+use UBOS::WebAppTest;
 
 # The states and transitions for this test
 
-my $TEST = new IndieBox::WebAppTest(
+my $TEST = new UBOS::WebAppTest(
     name                     => 'Selfoss1AppTest',
     appToTest                => 'selfoss',
     hostname                 => 'selfoss-test',
     testContext              => '/foobar',
 
     checks => [
-            new IndieBox::WebAppTest::StateCheck(
+            new UBOS::WebAppTest::StateCheck(
                     name  => 'virgin',
                     check => sub {
                         my $c = shift;
