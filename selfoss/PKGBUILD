@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=2.11
-pkgrel=5
+pkgrel=6
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 license=("GPL")
@@ -13,17 +13,18 @@ md5sums=('99253006e1bc7cc23fedd866dfc1e8f1')
 
 package() {
 # Manifest
-    mkdir -p $pkgdir/var/lib/ubos/manifests
-    install -m0644 $startdir/ubos-manifest.json $pkgdir/var/lib/ubos/manifests/${pkgname}.json
+    mkdir -p ${pkgdir}/var/lib/ubos/manifests
+    install -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/var/lib/ubos/manifests/${pkgname}.json
 
 # Icons
-    mkdir -p $pkgdir/srv/http/_appicons/$pkgname
-    install -m644 $startdir/appicons/{72x72,144x144}.png $pkgdir/srv/http/_appicons/$pkgname/
+    mkdir -p ${pkgdir}/srv/http/_appicons/$pkgname
+    install -m644 ${startdir}/appicons/{72x72,144x144}.png ${pkgdir}/srv/http/_appicons/${pkgname}/
 
 # Templates
-    mkdir -p $pkgdir/usr/share/${pkgname}/tmpl
-    install -m644 $startdir/tmpl/{config.ini,cronjob}.tmpl  $pkgdir/usr/share/${pkgname}/tmpl/
+    mkdir -p ${pkgdir}/usr/share/${pkgname}/tmpl
+    install -m644 ${startdir}/tmpl/{config.ini,cronjob,fix-trigger-definers.sql}.tmpl ${pkgdir}/usr/share/${pkgname}/tmpl/
 
 # Code
-    cp -dr --no-preserve=ownership $startdir/src/selfoss-$pkgver $pkgdir/usr/share/${pkgname}/selfoss
+    install -m644 ${startdir}/first-visit.pl ${pkgdir}/usr/share/${pkgname}/
+    cp -dr --no-preserve=ownership ${startdir}/src/selfoss-${pkgver} $pkgdir/usr/share/${pkgname}/selfoss
 }

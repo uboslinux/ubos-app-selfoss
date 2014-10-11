@@ -85,6 +85,20 @@
                     "retentionbucket"  : "maindb",
                     "privileges" : "all privileges"
                 }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "first-visit.pl"
+                }
+            ],
+            "upgraders" : [
+                {
+                    "type"         : "sqlscript",
+                    "name"         : "maindb",
+                    "template"     : "tmpl/fix-trigger-definers.sql.tmpl",
+                    "templatelang" : "varsubst"
+                }
             ]
         }
     }
