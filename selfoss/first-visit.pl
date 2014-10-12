@@ -15,7 +15,7 @@ if( 'install' eq $operation ) {
             . $config->getResolve( 'appconfig.context' )
             . '/';
 
-    my $cmd = 'curl';
+    my $cmd = 'curl'
             . " '$url'";
     
     my $out = '';
