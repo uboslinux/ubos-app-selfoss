@@ -28,10 +28,7 @@ use UBOS::WebAppTest;
 # The states and transitions for this test
 
 my $TEST = new UBOS::WebAppTest(
-    name                     => 'Selfoss1AppTest',
-    appToTest                => 'selfoss',
-    hostname                 => 'selfoss-test',
-    testContext              => '/foobar',
+    appToTest => 'selfoss',
 
     checks => [
             new UBOS::WebAppTest::StateCheck(
