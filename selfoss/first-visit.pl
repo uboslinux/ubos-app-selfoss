@@ -17,8 +17,9 @@ if( 'install' eq $operation ) {
 
     my $cmd = 'curl'
             . " '$url'"
-            . " --resolve '" . $config->getResolve( 'site.hostname' ) . ":80:127.0.0.1"
-            . " --resolve '" . $config->getResolve( 'site.hostname' ) . ":443:127.0.0.1";
+            . ' --insecure'
+            . " --resolve '" . $config->getResolve( 'site.hostname' ) . ":80:127.0.0.1'"
+            . " --resolve '" . $config->getResolve( 'site.hostname' ) . ":443:127.0.0.1'";
     
     my $out = '';
     my $err = '';
