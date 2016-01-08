@@ -9,7 +9,7 @@ arch=('any')
 license=("GPL")
 source=("https://github.com/SSilence/selfoss/archive/${pkgver}.tar.gz")
 options=('!strip')
-md5sums=('8c8d9f400b07f4f7a65f1873597a240b')
+sha512sums=('83db73a682aa9f383e57a1faf6e1ca2c0ba2b568077f45f53b0e211c20f4a92e47ca6a51fb504f4daf4825fd15b2c7ad366335b6325dbb0b743a253fd1301c3f')
 
 package() {
 # Manifest
