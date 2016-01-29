@@ -23,6 +23,7 @@
                     "type" : "directorytree",
                     "names" : [
                         ".htaccess",
+                        "cliupdate.php",
                         "common.php",
                         "controllers",
                         "daos",
@@ -33,8 +34,7 @@
                         "libs",
                         "run.php",
                         "spouts",
-                        "templates",
-                        "update.php"
+                        "templates"
                     ],
                     "source" : "selfoss/$1",
                     "uname" : "root",
