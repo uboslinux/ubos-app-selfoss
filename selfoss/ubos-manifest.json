@@ -14,7 +14,6 @@
                 "rewrite"
             ],
             "phpmodules" : [
-                "mysql",
                 "mysqli",
                 "pdo_mysql"
             ],
