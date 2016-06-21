@@ -3,3 +3,4 @@ selfoss-*.tar.xz
 selfoss-*.tar.xz.sig
 src/
 pkg/
+selfoss/
