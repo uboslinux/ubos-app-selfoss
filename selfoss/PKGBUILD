@@ -2,17 +2,14 @@ developer=http://selfoss.aditu.de/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.15
-pkgrel=2
+pkgver=2.16
+pkgrel=1
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 license=("GPL")
-# source=("https://github.com/SSilence/selfoss/archive/${pkgver}.tar.gz")
-# Temporarily, until https://github.com/SSilence/selfoss/pull/768 is merged
-source=("git+https://github.com/jernst/selfoss.git")
+source=("https://github.com/SSilence/selfoss/archive/${pkgver}.tar.gz")
 options=('!strip')
-sha512sums=('SKIP')
-# sha512sums=('d6e40512fb86120d307f3333ddb3476cddf9461048d1398a7160e8eabc70c2626dfe0ebe861aea07aba7a6208b0c37a0342b0c03262c493e86dca30100f652df')
+sha512sums=('360d42885ff7697d79e6cbcb6dd7b6792c5e9541230be87310e31eccd65430d6c1f47bd42d7035ecd61ea594b7f29a7cd694b1d1ce2a6cfd2284d9edf8277a5d')
 
 package() {
 # Manifest
@@ -29,6 +26,5 @@ package() {
 
 # Code
     install -m644 ${startdir}/first-visit.pl ${pkgdir}/usr/share/${pkgname}/
-    cp -dr --no-preserve=ownership ${startdir}/src/selfoss $pkgdir/usr/share/${pkgname}/selfoss
-    # cp -dr --no-preserve=ownership ${startdir}/src/selfoss-${pkgver} $pkgdir/usr/share/${pkgname}/selfoss
+    cp -dr --no-preserve=ownership ${startdir}/src/selfoss-${pkgver} $pkgdir/usr/share/${pkgname}/selfoss
 }
