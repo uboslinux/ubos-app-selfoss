@@ -2,14 +2,14 @@ developer=http://selfoss.aditu.de/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.16
+pkgver=2.17
 pkgrel=1
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 license=("GPL")
 source=("https://github.com/SSilence/selfoss/archive/${pkgver}.tar.gz")
 options=('!strip')
-sha512sums=('360d42885ff7697d79e6cbcb6dd7b6792c5e9541230be87310e31eccd65430d6c1f47bd42d7035ecd61ea594b7f29a7cd694b1d1ce2a6cfd2284d9edf8277a5d')
+sha512sums=('b1a601d2bc2f4e88b64f3e49ddb319771fb9b1d82f45eebe401e5adf06ef87db5fbfe788c2708c7d44acc3173d4e2e1c50d47c0b032c39eeacd28b6279aee154')
 
 package() {
 # Manifest
