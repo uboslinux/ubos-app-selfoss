@@ -26,7 +26,5 @@ package() {
 
 # Code
     install -m644 ${startdir}/first-visit.pl ${pkgdir}/usr/share/${pkgname}/
-
     cp -dr --no-preserve=ownership ${startdir}/src $pkgdir/usr/share/${pkgname}/selfoss
-    rm $pkgdir/usr/share/selfoss/selfoss/data/fulltextrss/standard/pérotin.com.txt # character problem in filename
 }
