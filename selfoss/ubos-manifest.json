@@ -34,7 +34,7 @@
                         "run.php",
                         "spouts",
                         "templates",
-                        "vendors"
+                        "vendor"
                     ],
                     "source" : "selfoss/$1",
                     "uname" : "root",
