@@ -1,4 +1,5 @@
 *.*.tar.gz
+selfoss-*.zip
 selfoss-*.tar.xz
 selfoss-*.tar.xz.sig
 src/

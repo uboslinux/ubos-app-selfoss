@@ -3,13 +3,13 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=2.17
-pkgrel=1
+pkgrel=2
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 license=("GPL")
-source=("https://github.com/SSilence/selfoss/archive/${pkgver}.tar.gz")
+source=("https://github.com/SSilence/selfoss/releases/download/${pkgver}/selfoss-${pkgver}.zip")
 options=('!strip')
-sha512sums=('b1a601d2bc2f4e88b64f3e49ddb319771fb9b1d82f45eebe401e5adf06ef87db5fbfe788c2708c7d44acc3173d4e2e1c50d47c0b032c39eeacd28b6279aee154')
+sha512sums=('a8fdfcd192ef39f7fb99c1abbe09893335ebbf31bb8c211346bc474d93eceb0880a941b92600da8c045b5e98d414692782e3fdd6bc99332e051d46309c97909b')
 
 package() {
 # Manifest
@@ -26,5 +26,7 @@ package() {
 
 # Code
     install -m644 ${startdir}/first-visit.pl ${pkgdir}/usr/share/${pkgname}/
-    cp -dr --no-preserve=ownership ${startdir}/src/selfoss-${pkgver} $pkgdir/usr/share/${pkgname}/selfoss
+
+    cp -dr --no-preserve=ownership ${startdir}/src $pkgdir/usr/share/${pkgname}/selfoss
+    rm $pkgdir/usr/share/selfoss/selfoss/data/fulltextrss/standard/pérotin.com.txt # character problem in filename
 }
