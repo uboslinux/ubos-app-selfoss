@@ -33,7 +33,8 @@
                         "libs",
                         "run.php",
                         "spouts",
-                        "templates"
+                        "templates",
+                        "vendors"
                     ],
                     "source" : "selfoss/$1",
                     "uname" : "root",
