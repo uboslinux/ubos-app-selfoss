@@ -8,6 +8,7 @@ pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web a
 arch=('any')
 license=("GPL")
 source=("https://github.com/SSilence/selfoss/releases/download/${pkgver}/selfoss-${pkgver}.zip")
+releasepage=('https://selfoss.aditu.de/')
 options=('!strip')
 sha512sums=('a8fdfcd192ef39f7fb99c1abbe09893335ebbf31bb8c211346bc474d93eceb0880a941b92600da8c045b5e98d414692782e3fdd6bc99332e051d46309c97909b')
 
