@@ -3,7 +3,7 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=2.17
-pkgrel=4
+pkgrel=5
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 license=("GPL")
@@ -11,6 +11,17 @@ source=("https://github.com/SSilence/selfoss/releases/download/${pkgver}/selfoss
 releasepage=('https://selfoss.aditu.de/')
 options=('!strip')
 sha512sums=('a8fdfcd192ef39f7fb99c1abbe09893335ebbf31bb8c211346bc474d93eceb0880a941b92600da8c045b5e98d414692782e3fdd6bc99332e051d46309c97909b')
+
+build() {
+    # generate all.css per https://selfoss.aditu.de/forum/index.php?id=1279
+    # until next version that is compatible with php 7.2
+    cp index.php index-tmp.php
+    cp common.php common-tmp.php
+    perl -pi -e "s!/common.php!/common-tmp.php!" index-tmp.php
+    perl -pi -e "s!set\('DEBUG', 0\)!set('DEBUG', 1)!" common-tmp.php
+    php index-tmp.php > /dev/null
+    rm index-tmp.php common-tmp.php
+}
 
 package() {
 # Manifest
