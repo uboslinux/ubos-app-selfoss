@@ -2,6 +2,8 @@
 #
 # Initialize freshly installed selfoss. Only invoke from ubos-manifest.json.
 #
+# Copyright (C) 2014 and later, Indie Computing Corp. All rights reserved. License: see package.
+#
 
 use strict;
 
