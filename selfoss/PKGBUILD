@@ -2,26 +2,18 @@ developer=http://selfoss.aditu.de/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.17
-pkgrel=6
+pkgver=2.18
+pkgrel=1
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 license=("GPL3")
-source=("https://github.com/SSilence/selfoss/releases/download/${pkgver}/selfoss-${pkgver}.zip")
-releasepage=('https://selfoss.aditu.de/')
+# source=("https://github.com/SSilence/selfoss/releases/download/${pkgver}/selfoss-${pkgver}.zip")
+_buildid=77d57d1
+# For the time being, PHP 7.2 is not officially supported yet
+source=("selfoss-${pkgver}-${_buildid}.zip::https://bintray.com/fossar/selfoss/download_file?file_path=selfoss-${pkgver}-${_buildid}.zip")
+releasepage=('https://github.com/SSilence/selfoss/releases')
 options=('!strip')
-sha512sums=('a8fdfcd192ef39f7fb99c1abbe09893335ebbf31bb8c211346bc474d93eceb0880a941b92600da8c045b5e98d414692782e3fdd6bc99332e051d46309c97909b')
-
-build() {
-    # generate all.css per https://selfoss.aditu.de/forum/index.php?id=1279
-    # until next version that is compatible with php 7.2
-    cp index.php index-tmp.php
-    cp common.php common-tmp.php
-    perl -pi -e "s!/common.php!/common-tmp.php!" index-tmp.php
-    perl -pi -e "s!set\('DEBUG', 0\)!set('DEBUG', 1)!" common-tmp.php
-    php index-tmp.php > /dev/null
-    rm index-tmp.php common-tmp.php
-}
+sha512sums=('de6eea8e1814f4da3d24c55390c65cad1a3df1458a69ec391f2b915518bef83bcb6f3fb37ab03368670101dd715444f1f670c7086dc79b81599484a7125979d8')
 
 package() {
 # Manifest
