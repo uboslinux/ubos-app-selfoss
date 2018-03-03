@@ -89,7 +89,7 @@
             "installers" : [
                 {
                     "type"   : "perlscript",
-                    "source" : "first-visit.pl"
+                    "source" : "bin/first-visit.pl"
                 }
             ],
             "upgraders" : [
