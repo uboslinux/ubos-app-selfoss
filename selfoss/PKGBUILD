@@ -29,6 +29,6 @@ package() {
     install -m644 ${startdir}/tmpl/{config.ini,cronjob,fix-trigger-definers.sql}.tmpl ${pkgdir}/usr/share/${pkgname}/tmpl/
 
 # Code
-    install -m644 ${startdir}/first-visit.pl ${pkgdir}/usr/share/${pkgname}/
+    install -D -m644 ${startdir}/bin/first-visit.pl -t ${pkgdir}/usr/share/${pkgname}/bin/
     cp -dr --no-preserve=ownership ${startdir}/src ${pkgdir}/usr/share/${pkgname}/selfoss
 }

@@ -15,7 +15,7 @@ if( 'install' eq $operation ) {
             . '://'
             . $config->getResolve( 'site.hostname' )
             . $config->getResolve( 'appconfig.context' )
-            . '/';
+            . '/update';
 
     my $cmd = 'curl'
             . " '$url'"
