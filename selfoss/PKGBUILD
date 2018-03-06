@@ -3,17 +3,14 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=2.18
-pkgrel=2
+pkgrel=3
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 license=("GPL3")
-# source=("https://github.com/SSilence/selfoss/releases/download/${pkgver}/selfoss-${pkgver}.zip")
-_buildid=77d57d1
-# For the time being, PHP 7.2 is not officially supported yet
-source=("selfoss-${pkgver}-${_buildid}.zip::https://bintray.com/fossar/selfoss/download_file?file_path=selfoss-${pkgver}-${_buildid}.zip")
+source=("https://github.com/SSilence/selfoss/releases/download/${pkgver}/selfoss-${pkgver}.zip")
 releasepage=('https://github.com/SSilence/selfoss/releases')
 options=('!strip')
-sha512sums=('de6eea8e1814f4da3d24c55390c65cad1a3df1458a69ec391f2b915518bef83bcb6f3fb37ab03368670101dd715444f1f670c7086dc79b81599484a7125979d8')
+sha512sums=('6966458f4ef803ac87df7a2650aed73d6d99922f84d21f64950964b752535d3a1ddd8c585ce2ca5a3f58fb9f2de76fa7a0932ce2eb62faa753ed2398b6ebb748')
 
 package() {
 # Manifest
