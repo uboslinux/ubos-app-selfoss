@@ -32,4 +32,3 @@ if( 'install' eq $operation ) {
 }
 
 1;
-
