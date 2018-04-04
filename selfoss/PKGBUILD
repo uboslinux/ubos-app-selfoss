@@ -17,12 +17,12 @@ package() {
     install -D -m0644 ${startdir}/ubos-manifest.json ${pkgdir}/ubos/lib/ubos/manifests/${pkgname}.json
 
 # Icons
-    install -D -m644 ${startdir}/appicons/{72x72,144x144}.png -t ${pkgdir}/ubos/http/_appicons/${pkgname}/
+    install -D -m0644 ${startdir}/appicons/{72x72,144x144}.png -t ${pkgdir}/ubos/http/_appicons/${pkgname}/
 
 # Templates
-    install -m644 ${startdir}/tmpl/{config.ini,cronjob,fix-trigger-definers.sql}.tmpl -t ${pkgdir}/ubos/share/${pkgname}/tmpl/
+    install -D -m0644 ${startdir}/tmpl/{config.ini,cronjob,fix-trigger-definers.sql}.tmpl -t ${pkgdir}/ubos/share/${pkgname}/tmpl/
 
 # Code
-    install -D -m644 ${startdir}/bin/first-visit.pl -t ${pkgdir}/ubos/share/${pkgname}/bin/
+    install -D -m0644 ${startdir}/bin/first-visit.pl -t ${pkgdir}/ubos/share/${pkgname}/bin/
     cp -dr --no-preserve=ownership ${startdir}/src ${pkgdir}/ubos/share/${pkgname}/selfoss
 }
