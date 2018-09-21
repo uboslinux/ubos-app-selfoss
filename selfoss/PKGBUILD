@@ -25,4 +25,7 @@ package() {
 # Code
     install -D -m0644 ${startdir}/bin/first-visit.pl -t ${pkgdir}/ubos/share/${pkgname}/bin/
     cp -dr --no-preserve=ownership ${startdir}/src ${pkgdir}/ubos/share/${pkgname}/selfoss
+
+# Cleanup code
+    rm ${pkgdir}/ubos/share/selfoss/selfoss/selfoss-${pkgver}.zip
 }
