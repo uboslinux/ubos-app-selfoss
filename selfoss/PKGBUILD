@@ -22,9 +22,6 @@ package() {
 # Templates
     install -D -m0644 ${startdir}/tmpl/{config.ini,cronjob,fix-trigger-definers.sql}.tmpl -t ${pkgdir}/ubos/share/${pkgname}/tmpl/
 
-# Cleanup code
-    rm ${startdir}/src/selfoss-${pkgver}.zip
-
 # Code
     install -D -m0644 ${startdir}/bin/first-visit.pl -t ${pkgdir}/ubos/share/${pkgname}/bin/
     cp -dr --no-preserve=ownership ${startdir}/src ${pkgdir}/ubos/share/${pkgname}/selfoss
