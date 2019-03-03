@@ -10,24 +10,14 @@ use strict;
 use UBOS::Logging;
 use UBOS::Utils;
 
-if( 'install' eq $operation ) {
-    my $url = $config->getResolve( 'site.protocol' )
-            . '://'
-            . $config->getResolve( 'site.hostname' )
-            . $config->getResolve( 'appconfig.context' )
-            . '/sources';
+if( 'install' eq $operation || 'upgrade' eq $operation ) {
+    my $dir  = $config->getResolve( 'appconfig.apache2.dir' );
+    my $user = $config->getResolve( 'apache2.uname' );
 
-    my $cmd = 'curl'
-            . " '$url'"
-            . ' --insecure'
-            . " --resolve '" . $config->getResolve( 'site.hostname' ) . ":80:127.0.0.1'"
-            . " --resolve '" . $config->getResolve( 'site.hostname' ) . ":443:127.0.0.1'";
-
+    my $cmd = "cd '$dir' && sudo -u $user php index.php";
     my $out = '';
     my $err = '';
 
-print "XXX $cmd  -- now hit CR\n";
-getc();
     if( UBOS::Utils::myexec( $cmd )) { # , undef, \$out, \$err ) != 0 ) {
         error( 'Initializing selfoss failed:', $err );
     }
