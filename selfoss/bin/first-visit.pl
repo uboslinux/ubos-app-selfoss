@@ -18,7 +18,7 @@ if( 'install' eq $operation || 'upgrade' eq $operation ) {
     my $out = '';
     my $err = '';
 
-    if( UBOS::Utils::myexec( $cmd )) { # , undef, \$out, \$err ) != 0 ) {
+    if( UBOS::Utils::myexec( $cmd, undef, \$out, \$err ) != 0 ) {
         error( 'Initializing selfoss failed:', $err );
     }
 }
