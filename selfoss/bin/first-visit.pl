@@ -15,18 +15,20 @@ if( 'install' eq $operation ) {
             . '://'
             . $config->getResolve( 'site.hostname' )
             . $config->getResolve( 'appconfig.context' )
-            . '/update';
+            . '/sources';
 
     my $cmd = 'curl'
             . " '$url'"
             . ' --insecure'
             . " --resolve '" . $config->getResolve( 'site.hostname' ) . ":80:127.0.0.1'"
             . " --resolve '" . $config->getResolve( 'site.hostname' ) . ":443:127.0.0.1'";
-    
+
     my $out = '';
     my $err = '';
 
-    if( UBOS::Utils::myexec( $cmd, undef, \$out, \$err ) != 0 ) {
+print "XXX $cmd  -- now hit CR\n";
+getc();
+    if( UBOS::Utils::myexec( $cmd )) { # , undef, \$out, \$err ) != 0 ) {
         error( 'Initializing selfoss failed:', $err );
     }
 }

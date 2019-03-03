@@ -72,6 +72,18 @@
                     "template"     : "tmpl/cronjob.tmpl",
                     "templatelang" : "varsubst"
                 }
+            ],
+            "installers" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "bin/first-visit.pl"
+                }
+            ],
+            "upgraders" : [
+                {
+                    "type"   : "perlscript",
+                    "source" : "bin/first-visit.pl"
+                }
             ]
         },
         "mysql" : {
@@ -82,12 +94,6 @@
                     "retentionpolicy"  : "keep",
                     "retentionbucket"  : "maindb",
                     "privileges" : "all privileges"
-                }
-            ],
-            "installers" : [
-                {
-                    "type"   : "perlscript",
-                    "source" : "bin/first-visit.pl"
                 }
             ],
             "upgraders" : [
