@@ -6,6 +6,11 @@
  *
  */
 
+/* old version */
+DROP TRIGGER IF EXISTS insert_updatetime_trigger;
+DROP TRIGGER IF EXISTS update_updatetime_trigger;
+
+/* current version */
 DROP TRIGGER IF EXISTS items_insert_trigger;
 DROP TRIGGER IF EXISTS items_update_trigger;
 
@@ -17,7 +22,7 @@ CREATE DEFINER='${appconfig.mysql.dbuser.maindb}'@'${appconfig.mysql.dbhost.main
             BEGIN
                 SET NEW.updatetime = NOW();
                 SET NEW.lastseen = NOW();
-            END */;;
+            END ;;
 
 CREATE DEFINER='${appconfig.mysql.dbuser.maindb}'@'${appconfig.mysql.dbhost.maindb}'
     TRIGGER items_update_trigger
@@ -29,6 +34,6 @@ CREATE DEFINER='${appconfig.mysql.dbuser.maindb}'@'${appconfig.mysql.dbhost.main
                 ) THEN
                     SET NEW.updatetime = NOW();
                 END IF;
-            END */;;
+            END ;;
 
 DELIMITER ;
