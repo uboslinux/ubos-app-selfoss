@@ -1,24 +1,34 @@
 /*
  * When imported from backup, the selfoss triggers still have the old
  * database user as the trigger 'definer'. This script fixes this.
- * 
+ *
  * Copyright (C) 2014 and later, Indie Computing Corp. All rights reserved. License: see package.
  *
  */
 
-DROP TRIGGER IF EXISTS insert_updatetime_trigger;
-DROP TRIGGER IF EXISTS update_updatetime_trigger;
+DROP TRIGGER IF EXISTS items_insert_trigger;
+DROP TRIGGER IF EXISTS items_update_trigger;
+
+DELIMITER ;;
 
 CREATE DEFINER='${appconfig.mysql.dbuser.maindb}'@'${appconfig.mysql.dbhost.maindb}'
-       TRIGGER insert_updatetime_trigger
-       BEFORE INSERT
-       ON `items`
-       FOR EACH ROW
-       SET NEW.updatetime = NOW();
+    TRIGGER items_insert_trigger
+        BEFORE INSERT ON `items` FOR EACH ROW
+            BEGIN
+                SET NEW.updatetime = NOW();
+                SET NEW.lastseen = NOW();
+            END */;;
 
 CREATE DEFINER='${appconfig.mysql.dbuser.maindb}'@'${appconfig.mysql.dbhost.maindb}'
-       TRIGGER update_updatetime_trigger
-       BEFORE UPDATE
-       ON `items`
-       FOR EACH ROW
-       SET NEW.updatetime = NOW();
+    TRIGGER items_update_trigger
+       BEFORE UPDATE ON `items` FOR EACH ROW
+            BEGIN
+                IF (
+                    OLD.unread <> NEW.unread OR
+                    OLD.starred <> NEW.starred
+                ) THEN
+                    SET NEW.updatetime = NOW();
+                END IF;
+            END */;;
+
+DELIMITER ;
