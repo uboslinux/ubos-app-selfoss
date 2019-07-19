@@ -23,7 +23,8 @@ my $TEST = new UBOS::WebAppTest(
                     check => sub {
                         my $c = shift;
 
-                        $c->getMustStatus( '/', 200, 'Wrong status' );
+                        $c->getMustStatus( '/',           200, 'Wrong status' );
+                        $c->getMustStatus( '/?ajax=true', 200, 'Wrong status' );
                     }
             )
     ]
