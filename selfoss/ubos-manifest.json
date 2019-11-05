@@ -6,7 +6,8 @@
             "defaultcontext" : "/selfoss",
             "depends" : [
                 "php",
-                "php-apache"
+                "php-apache",
+                "smtp-server"
             ],
             "apache2modules" : [
                 "php7",
@@ -72,6 +73,10 @@
                     "name"   : "${appconfig.cronjobfile}",
                     "template"     : "tmpl/cronjob.tmpl",
                     "templatelang" : "varsubst"
+                },
+                {
+                    "type" : "systemd-service",
+                    "name" : "smtp-server@${appconfig.appconfigid}"
                 }
             ],
             "installers" : [
