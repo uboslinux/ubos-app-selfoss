@@ -10,7 +10,7 @@
                 "smtp-server"
             ],
             "apache2modules" : [
-                "php7",
+                "php",
                 "access_compat",
                 "rewrite"
             ],
