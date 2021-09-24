@@ -24,17 +24,13 @@
                     "type" : "directorytree",
                     "names" : [
                         ".htaccess",
+                        "assets",
+                        "public",
+                        "src",
+                        "vendor",
                         "cliupdate.php",
-                        "common.php",
-                        "controllers",
-                        "daos",
-                        "defaults.ini",
-                        "helpers",
                         "index.php",
-                        "run.php",
-                        "spouts",
-                        "templates",
-                        "vendor"
+                        "run.php"
                     ],
                     "source" : "selfoss/$1",
                     "uname" : "root",

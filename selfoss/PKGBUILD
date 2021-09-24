@@ -2,15 +2,16 @@ developer=http://selfoss.aditu.de/
 url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
-pkgver=2.18
-pkgrel=10
+pkgver=2.19
+pkgrel=1
 pkgdesc="Multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 license=("GPL3")
-source=("https://github.com/SSilence/selfoss/releases/download/${pkgver}/selfoss-${pkgver}.zip")
+# source=("https://github.com/SSilence/selfoss/releases/download/${pkgver}/selfoss-${pkgver}.zip")
+source=("selfoss-${pkgver}-${pkgrel}-downloaded.zip::https://dl.cloudsmith.io/public/fossar/selfoss-git/raw/names/selfoss.zip/versions/${pkgver}-fd8f195/selfoss-${pkgver}-fd8f195.zip")
 releasepage=('https://github.com/SSilence/selfoss/releases')
 options=('!strip')
-sha512sums=('6966458f4ef803ac87df7a2650aed73d6d99922f84d21f64950964b752535d3a1ddd8c585ce2ca5a3f58fb9f2de76fa7a0932ce2eb62faa753ed2398b6ebb748')
+sha512sums=('f50023873142b4e8537d70ec62cc27557c73bf385f8bb8de5a578463415e28063e220eae434574c1b03a75a6dc1c7a69990a517b2f1030616d4ff8066b4b769d')
 
 package() {
 # Manifest
@@ -24,8 +25,8 @@ package() {
 
 # Code
     install -D -m0644 ${startdir}/bin/first-visit.pl -t ${pkgdir}/ubos/share/${pkgname}/bin/
-    cp -dr --no-preserve=ownership ${startdir}/src ${pkgdir}/ubos/share/${pkgname}/selfoss
+    cp -dr --no-preserve=ownership ${startdir}/src/selfoss ${pkgdir}/ubos/share/${pkgname}
 
 # Cleanup code
-    rm ${pkgdir}/ubos/share/selfoss/selfoss/selfoss-${pkgver}.zip
+    rm "selfoss-${pkgver}-${pkgrel}-downloaded.zip"
 }
