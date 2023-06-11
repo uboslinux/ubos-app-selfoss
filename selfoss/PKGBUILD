@@ -3,15 +3,15 @@ url=${developer}
 maintainer=http://indiecomputing.com/
 pkgname=$(basename $(pwd))
 pkgver=2.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 license=("GPL3")
-# source=("https://github.com/SSilence/selfoss/releases/download/${pkgver}/selfoss-${pkgver}.zip")
-source=("selfoss-${pkgver}-${pkgrel}-downloaded.zip::https://dl.cloudsmith.io/public/fossar/selfoss-git/raw/names/selfoss.zip/versions/${pkgver}-fd8f195/selfoss-${pkgver}-fd8f195.zip")
+source=("https://github.com/SSilence/selfoss/releases/download/${pkgver}/selfoss-${pkgver}.zip")
+# source=("selfoss-${pkgver}-${pkgrel}-downloaded.zip::https://dl.cloudsmith.io/public/fossar/selfoss-git/raw/names/selfoss.zip/versions/${pkgver}-fd8f195/selfoss-${pkgver}-fd8f195.zip")
 releasepage=('https://github.com/SSilence/selfoss/releases')
 options=('!strip')
-sha512sums=('f50023873142b4e8537d70ec62cc27557c73bf385f8bb8de5a578463415e28063e220eae434574c1b03a75a6dc1c7a69990a517b2f1030616d4ff8066b4b769d')
+sha512sums=('d9b751e1d3725e4fc44353c579f6a8033c0802e0697627fd6e20adaf31a49f38ab485d6ea27bbcb645f48cc9de6db2bd451fe900f48f48e5e602171c2a71d634')
 
 package() {
 # Manifest
@@ -28,5 +28,5 @@ package() {
     cp -dr --no-preserve=ownership ${startdir}/src/selfoss ${pkgdir}/ubos/share/${pkgname}
 
 # Cleanup code
-    rm "selfoss-${pkgver}-${pkgrel}-downloaded.zip"
+#     rm "selfoss-${pkgver}-${pkgrel}-downloaded.zip"
 }

@@ -24,7 +24,6 @@
                     "type" : "directorytree",
                     "names" : [
                         ".htaccess",
-                        "assets",
                         "public",
                         "src",
                         "vendor",
